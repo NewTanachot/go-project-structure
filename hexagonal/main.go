@@ -19,7 +19,8 @@ func main() {
 	}
 
 	// Migrate the schema
-	db.Table("hexagonal_orders").AutoMigrate(&core.Order{})
+	db.AutoMigrate(&core.Order{})
+	// db.Table("hexagonal_orders").AutoMigrate(&core.Order{})
 
 	// Set up the core service and adapters
 	orderRepo := adapters.NewGormOrderRepository(db)
